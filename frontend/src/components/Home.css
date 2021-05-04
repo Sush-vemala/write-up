@@ -1,0 +1,23 @@
+.userData {
+  display: flex;
+}
+EditIcon {
+  cursor: pointer;
+}
+button {
+  background-color: #285db0;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 30%;
+}
+.button-group {
+  display: flex;
+  /* justify-content: space-between; */
+}

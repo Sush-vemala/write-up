@@ -1,0 +1,26 @@
+.article-list-item {
+  text-decoration: none;
+  color: black;
+  padding: 16px 0 0 0;
+}
+
+.article-list-item p {
+  padding-bottom: 32px;
+  border-bottom: 2px solid black;
+}
+.likes {
+  display: flex;
+}
+
+.thumbs-up {
+  margin-left: 5px;
+  cursor: pointer;
+  /* font-size: 30px !important; */
+}
+.thumbs-up :hover {
+  color: #285db0;
+}
+
+.thumbs-up.active {
+  fill: #285db0;
+}
