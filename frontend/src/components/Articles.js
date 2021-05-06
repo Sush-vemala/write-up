@@ -4,6 +4,8 @@ import "./Articles.css";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import UserContext from "./userContext";
 import axios from "axios";
+import DeleteIcon from "@material-ui/icons/Delete";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 function Articles({ storage }) {
   const [articles, setArticles] = useState([
@@ -15,6 +17,7 @@ function Articles({ storage }) {
   ]);
 
   const { userData } = useContext(UserContext);
+  function handleDelete(id) {}
 
   async function handleClick(article) {
     const upvoteData = { article, userId: userData.user.id };
@@ -51,17 +54,26 @@ function Articles({ storage }) {
                 ? "active"
                 : "primary";
             return (
-              <Link key={key} className="article-list-item">
-                <h3>{article.title}</h3>
-                <div className="likes">
-                  {article.upvotes.length} <span>likes</span>
-                  <ThumbUpAltIcon
-                    className={`thumbs-up ${upvoteColor}`}
-                    onClick={() => handleClick(article)}></ThumbUpAltIcon>
+              <div key={key} className="article-list-item">
+                <div className="articleHeader">
+                  <div className="deleteP">
+                    <h3 className="articleTitle">{article.title}</h3>
+                    <DeleteIcon
+                      className="deleteBtn"
+                      onClick={handleDelete}></DeleteIcon>
+                  </div>
+                  <div className="likes">
+                    {article.upvotes.length} <span>likes</span>
+                    <ThumbUpAltIcon
+                      className={`thumbs-up ${upvoteColor}`}
+                      onClick={() => handleClick(article)}></ThumbUpAltIcon>
+                  </div>
                 </div>
 
-                <p>{article.content}</p>
-              </Link>
+                <div className="deleteP">
+                  <p>{article.content}</p>
+                </div>
+              </div>
             );
           })}
         </div>

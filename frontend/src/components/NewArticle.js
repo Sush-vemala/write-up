@@ -53,7 +53,7 @@ function NewArticle() {
           onChange={handleChange}
           name="content"
           value={input.content}></textarea>
-        <button className="button" onClick={handleClick}>
+        <button title="postarticle" className="button" onClick={handleClick}>
           Post Article
         </button>
       </form>

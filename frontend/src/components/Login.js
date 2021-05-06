@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "./userContext";
 import ErrorNotice from "./ErrorNotice";
+import GoogleLogin from "react-google-login";
 import "./Login.css";
 
 function Login({ setStorage }) {
@@ -11,6 +12,7 @@ function Login({ setStorage }) {
   const [error, setError] = useState();
   const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
+
   const submit = async (e) => {
     e.preventDefault();
     try {
@@ -40,6 +42,7 @@ function Login({ setStorage }) {
       <form onSubmit={submit}>
         <label>Email: </label>
         <input
+          placeholder="example@xyz.com"
           type="email"
           id="email"
           onChange={(e) => setEmail(e.target.value)}
@@ -47,11 +50,17 @@ function Login({ setStorage }) {
 
         <label>Password: </label>
         <input
+          placeholder="password"
           type="password"
           id="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" value="Login">
+        <GoogleLogin
+          clientId="208216107105-1fd52oede58cm2sbgp7okp3s0f7gojkb.apps.googleusercontent.com"
+          buttonText="Login"
+          cookiePolicy={"single_host_origin"}
+        />
+        <button title="login" type="submit" value="Login">
           Login
         </button>
       </form>

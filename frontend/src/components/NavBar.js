@@ -30,7 +30,9 @@ function NavBar({ handleLogout, storage }) {
       <nav>
         <ul>
           <li>
-            <Link to="/">WriteUP</Link>
+            <Link className="title" to="/">
+              WriteUP
+            </Link>
           </li>
           {storage !== null && (
             <li>

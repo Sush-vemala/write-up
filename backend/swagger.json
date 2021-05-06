@@ -1,0 +1,145 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Write-up Project CRUD",
+      "description": "write up Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3002",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "articles",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    
+        "paths": {
+          "/articles": {
+            "get": {
+              "tags": ["articles"],
+              "summary": "Get all articles in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/articles"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "definitions": {
+          "articles": {
+            "required": ["title", "author","_id" ],
+            "properties": {
+              "_id": {
+                "type": "integer",
+                "uniqueItems": true
+              },
+              "title": {
+                "type": "string"
+              },
+              "author": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "upvotes": {
+                "type": "object",
+                "default": {
+                  "type": "array"
+                  }
+                }
+              }
+            }
+          },
+          "articles": {
+            "type": "array",
+            "$ref": "#/definitions/articles"
+          },
+          "paths": {
+            "/articles": {
+              "get": {
+                "tags": ["articles"],
+                "summary": "Get all articles in system",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "$ref": "#/definitions/articles"
+                    }
+                  }
+                }
+              }
+            },
+            "/articles/create": {
+              "post": {
+                "tags": ["articles"],
+                "summary": "create new article",
+                "description": "Create new article in system",
+                "parameters": [
+                  {
+                    "name": "article",
+                    "in": "body",
+                    "description": "creating new article",
+                    "schema": {
+                      "$ref": "#/definitions/articles"
+                    }
+                  }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                  "200": {
+                    "description": "New article is created",
+                    "schema": {
+                      "$ref": "#/definitions/articles"
+                    }
+                  }
+                }
+              }
+            },
+            "/articles/upvote": {
+                "parameters": [
+                  {
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of article that we want to find",
+                    "type": "integer"
+                  }
+                ],
+                "put": {
+                  "summary": "Update the article/upvotes with give ID",
+                  "tags": ["articles"],
+                  "parameters": [
+                    {
+                      "name": "articles",
+                      "in": "body",
+                      "description": "article with new values of properties",
+                      "schema": {
+                        "$ref": "#/definitions/upvoteArticle"
+                      }
+                    }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "Upvoted the article",
+                      "schema": {
+                        "$ref": "#/definitions/articles"
+                      }
+                    }
+                  }
+                }
+              }
+          }
+        }
+      

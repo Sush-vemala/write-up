@@ -4,7 +4,8 @@ const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
 const User = require("../models/userModel");
 const config = require("../config");
-// Register
+
+// Registration endpoint
 router.post("/register", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName } = req.body;
@@ -38,7 +39,7 @@ router.post("/register", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-// Login
+// Login endpoint
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -98,6 +99,7 @@ router.get("/", auth, async (req, res) => {
   });
 });
 
+//profile settings endpoint
 router.patch("/updateProfile/:id", async (req, res) => {
   try {
     const data = req.body;

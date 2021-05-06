@@ -3,6 +3,7 @@ const router = express.Router();
 const Article = require("../models/articleModel");
 const User = require("../models/userModel");
 
+//creating new article
 router.route("/create").post((req, res) => {
   // const { title, message, selectedFile, creator, tags } = req.body;
   console.log("hey");
@@ -26,8 +27,23 @@ router.route("/login").get((req, res) => {
     token: "test123",
   });
 });
+//delete using then and catch
+router.route("delete/:id").delete((req, res) => {
+  Article.findByIdAndDelete(req.params.id)
+    .then((deletedArticle) => res.status(200).json(deletedArticle))
+    .catch((err) => res.json({ status: err.message, code: 404 }));
+});
 
-//get particular article
+//delete using async and await
+router.route("delete/:id").delete(async (req, res) => {
+  try {
+    const deletedArticle = await Article.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedArticle);
+  } catch (err) {
+    res.json({ status: err.message, code: 404 });
+  }
+});
+//upvoting single article endpoint
 router.route("/upvote").put((req, res) => {
   const articleFromQuery = req.body.article;
   const userId = req.body.userId;

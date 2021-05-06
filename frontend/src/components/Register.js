@@ -64,7 +64,7 @@ function Register() {
           id="dsplay-name"
           onChange={(e) => setDisplayName(e.target.value)}
         />
-        <button type="submit" value="Register">
+        <button type="submit" title="register" value="Register">
           Register
         </button>
       </form>

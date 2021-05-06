@@ -1,12 +1,17 @@
 .article-list-item {
-  text-decoration: none;
-  color: black;
-  padding: 16px 0 0 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 5%;
+}
+h1 {
+  text-align: center;
+}
+.articleTitle {
+  /* padding: 2%; */
+  color: #285db0;
+  /* text-align: center; */
 }
 
 .article-list-item p {
-  padding-bottom: 32px;
-  border-bottom: 2px solid black;
 }
 .likes {
   display: flex;
@@ -23,4 +28,13 @@
 
 .thumbs-up.active {
   fill: #285db0;
+}
+
+.deleteP {
+  display: flex;
+  justify-content: space-between;
+}
+.deleteBtn {
+  color: #db2e1a;
+  cursor: pointer;
 }
