@@ -75,7 +75,6 @@ function Home() {
   console.log(userData.user);
   return (
     <div>
-      <p> Write up is a articles publishing platform. </p>
       {userData.user ? (
         <div>
           {/* <h1>Profile</h1> */}
@@ -87,11 +86,15 @@ function Home() {
           {flag ? renderInputField() : <> </>}
         </div>
       ) : (
-        <>
-          <h2>You are not logged in</h2>
-          <Link to="/login">Login</Link>
-        </>
+        <></>
       )}
+      <p>
+        {" "}
+        Words has a power to change people's lives . <em>Write-up</em> provides
+        a platform for those who wants to change world with their words and
+        thoughts. It empowers consumers by providing endless articles and also
+        lets them share their thoughts.
+      </p>
     </div>
   );
 }

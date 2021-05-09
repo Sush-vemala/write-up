@@ -10,8 +10,11 @@ it("User registration sucessfull", () => {
 describe("Input value", () => {
   it("Update the text", () => {
     const { queryByPlaceholderText } = render(<Register />);
+
     const displayName = queryByPlaceholderText("username");
+
     fireEvent.change(displayName, { target: { value: "text" } });
+
     expect(displayName.value).toBe("text");
   });
 });

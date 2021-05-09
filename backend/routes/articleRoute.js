@@ -28,21 +28,24 @@ router.route("/login").get((req, res) => {
   });
 });
 //delete using then and catch
-router.route("delete/:id").delete((req, res) => {
-  Article.findByIdAndDelete(req.params.id)
-    .then((deletedArticle) => res.status(200).json(deletedArticle))
-    .catch((err) => res.json({ status: err.message, code: 404 }));
-});
+// router.route("delete/:id").delete((req, res) => {
+//   Article.findByIdAndDelete(req.params.id)
+//     .then((deletedArticle) => res.status(200).json(deletedArticle))
+//     .catch((err) => res.json({ status: err.message, code: 404 }));
+// });
 
 //delete using async and await
-router.route("delete/:id").delete(async (req, res) => {
+router.route("/delete/:id").delete(async (req, res) => {
+  console.log(req.params.id);
   try {
     const deletedArticle = await Article.findByIdAndDelete(req.params.id);
+    console.log(req.params.id);
     res.status(200).json(deletedArticle);
   } catch (err) {
     res.json({ status: err.message, code: 404 });
   }
 });
+
 //upvoting single article endpoint
 router.route("/upvote").put((req, res) => {
   const articleFromQuery = req.body.article;

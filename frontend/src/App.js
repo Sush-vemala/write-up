@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Articles from "./components/Articles";
 import Home from "./components/Home";
@@ -17,20 +17,23 @@ function App() {
   });
   const [storage, setStorage] = useState(localStorage.getItem("auth-token"));
 
+  // const { userData, setUserData } = useContext(UserContext);
+
   useEffect(() => {
     // setDisplayArticles(storage);
   }, [storage]);
   function handleLogout() {
     localStorage.setItem("auth-token", null);
     setStorage(null);
+    setUserData({ token: undefined, user: undefined });
   }
 
   const value = { userData, setUserData };
 
   return (
     <Router>
-      <NavBar handleLogout={handleLogout} storage={storage} />
       <UserContext.Provider value={value}>
+        <NavBar handleLogout={handleLogout} storage={storage} />
         <div id="page-body">
           <Switch>
             <Route path="/" exact>
@@ -41,7 +44,8 @@ function App() {
               <Login setStorage={setStorage}></Login>
             </Route>
             <Route path="/articles">
-              <Articles storage={storage} />
+              {/* <Articles storage={storage} /> */}
+              <Articles />
             </Route>
 
             <Route path="/new-article">

@@ -39,6 +39,7 @@ router.post("/register", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 // Login endpoint
 router.post("/login", async (req, res) => {
   try {

@@ -1,3 +1,9 @@
+.newArticle {
+  margin-top: 3%;
+}
+.newArticle > h1 {
+  text-align: center;
+}
 input[type="text"] {
   width: 100%;
   padding: 12px 20px;

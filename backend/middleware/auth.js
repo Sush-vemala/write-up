@@ -1,6 +1,7 @@
-const config = require('../config');
+const config = require("../config");
 
 const jwt = require("jsonwebtoken");
+
 const auth = (req, res, next) => {
   try {
     const token = req.header("x-auth-token");
@@ -19,4 +20,5 @@ const auth = (req, res, next) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 module.exports = auth;

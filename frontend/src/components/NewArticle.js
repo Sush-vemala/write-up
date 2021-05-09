@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./NewArticle.css";
 import axios from "axios";
+import UserContext from "./userContext";
+import { useHistory } from "react-router-dom";
 
 function NewArticle() {
   const [input, setInput] = useState({
     title: "",
     content: "",
   });
+
+  const { userData, setUserData } = useContext(UserContext);
+
+  const history = useHistory();
+
+  console.log("user data", userData);
+
+  //middleware
+  if (userData.token === undefined) {
+    history.push("/login");
+  }
+
+  //checking user logged in or not
+  useEffect(() => {
+    // if (userData.token === undefined) {
+    //   history.push("/login");
+    // }
+  }, []);
 
   function handleChange(event) {
     // console.log(event.target);
@@ -41,7 +61,8 @@ function NewArticle() {
           Post Article
         </button>
       </form> */}
-      <form>
+      <form className="newArticle">
+        <h1>Create New Article</h1>
         <label>Article Title</label>
         <input
           type="text"

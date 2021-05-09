@@ -13,6 +13,20 @@ function Login({ setStorage }) {
   const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
 
+  const responseSuccessGoogle = (response) => {
+    console.log(response);
+    axios({
+      method: "POST",
+      url: "http://localhost:3002/users/googlelogin",
+      data: { tokenId: response.tokenId },
+    }).then((response) => {
+      console.log("Google Login Success", response);
+    });
+  };
+  const responseFailureGoogle = (response) => {
+    console.log(response);
+  };
+
   const submit = async (e) => {
     e.preventDefault();
     try {
@@ -58,6 +72,8 @@ function Login({ setStorage }) {
         <GoogleLogin
           clientId="208216107105-1fd52oede58cm2sbgp7okp3s0f7gojkb.apps.googleusercontent.com"
           buttonText="Login"
+          onSuccess={responseSuccessGoogle}
+          onFailure={responseFailureGoogle}
           cookiePolicy={"single_host_origin"}
         />
         <button title="login" type="submit" value="Login">

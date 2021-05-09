@@ -61,6 +61,7 @@ function Register() {
         <label>Display name </label>
         <input
           type="text"
+          placeholder="username"
           id="dsplay-name"
           onChange={(e) => setDisplayName(e.target.value)}
         />

@@ -10,9 +10,6 @@ h1 {
   color: #285db0;
   /* text-align: center; */
 }
-
-.article-list-item p {
-}
 .likes {
   display: flex;
 }
